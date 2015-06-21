@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Exploring Car Data</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Exploring Car Data">
+  <meta name="author" content="">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="http://slidifylibraries2.googlecode.com/git/inst/libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/js/slides" 
+    src="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Exploring Car Data</h1>
+    <h2>A Shiny app for looking at the Auto dataset from the ISLR package in R</h2>
+    <p><br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Data description</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Uses the &quot;Auto&quot; dataset from the ISLR package in R</li>
+<li>Contains 392 observations (cars) 9 variables: mpg, cylinders, displacement, horsepower, weight, acceleration, year, origin, and name</li>
+<li>Origin is defined as 1. American, 2. European, 3. Japanese</li>
+<li>The dataset was used in the 1983 American Statistical Association Exposition</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Car Data</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code>##       mpg          cylinders      displacement     horsepower   
+##  Min.   : 9.00   Min.   :3.000   Min.   : 68.0   Min.   : 46.0  
+##  1st Qu.:17.00   1st Qu.:4.000   1st Qu.:105.0   1st Qu.: 75.0  
+##  Median :22.75   Median :4.000   Median :151.0   Median : 93.5  
+##  Mean   :23.45   Mean   :5.472   Mean   :194.4   Mean   :104.5  
+##  3rd Qu.:29.00   3rd Qu.:8.000   3rd Qu.:275.8   3rd Qu.:126.0  
+##  Max.   :46.60   Max.   :8.000   Max.   :455.0   Max.   :230.0  
+##                                                                 
+##      weight      acceleration        year           origin     
+##  Min.   :1613   Min.   : 8.00   Min.   :70.00   Min.   :1.000  
+##  1st Qu.:2225   1st Qu.:13.78   1st Qu.:73.00   1st Qu.:1.000  
+##  Median :2804   Median :15.50   Median :76.00   Median :1.000  
+##  Mean   :2978   Mean   :15.54   Mean   :75.98   Mean   :1.577  
+##  3rd Qu.:3615   3rd Qu.:17.02   3rd Qu.:79.00   3rd Qu.:2.000  
+##  Max.   :5140   Max.   :24.80   Max.   :82.00   Max.   :3.000  
+##                                                                
+##                  name    
+##  amc matador       :  5  
+##  ford pinto        :  5  
+##  toyota corolla    :  5  
+##  amc gremlin       :  4  
+##  amc hornet        :  4  
+##  chevrolet chevette:  4  
+##  (Other)           :365
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Shiny App</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>This Shiny app creates a boxplot by car origin for the variable chosen by the user. An example is shown below:</p>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfgAAAH4CAMAAACR9g9NAAAAtFBMVEUAAAAAADoAAGYAOjoAOmYAOpAAZmYAZpAAZrYAujgzMzM6AAA6ADo6AGY6Ojo6OmY6OpA6ZmY6ZrY6kNthnP9mAABmADpmAGZmOgBmOjpmOpBmZgBmZjpmZmZmtv9/f3+QOgCQOjqQOmaQZgCQkGaQkLaQtpCQ2/+2ZgC2Zjq225C2/7a2///MzMzbkDrbtmbb25Db29vb/7bb///l5eX4dm36+vr/tmb/25D//7b//9v///+9Z/d7AAAACXBIWXMAAAsSAAALEgHS3X78AAAQFElEQVR4nO3dC3/bVhmAccVgMEkpbUVaGJ3blYG9zWiXZJUdff/vxTmSnMQXvY6l98jn8jy/bk29oNfkX10sKU5WUZJll34CdJmATzTgEw34RAM+0YBPNOATDfhEAz7RgE804BMN+EQDPtGATzTgEw34RAM+0YBPNOATDfhEiwt+/er7LJuV5p9q8/6/N9lkVVWb2+zqe/sBPS8y+JtZVRr19avF5tZgF5PV5jY3DwO/X2zwc7OG1//Y3+zv5fSusn8BLv3UfCsy+FcLs41f1PDmt+rhc17MzOMl8PsBn2jxwrOpF4sY3mAvp3dmpa/qj2mniOG/zTK7ttcv5+wH9Ly44J9Vb+q3lcDvFz18ebWwx3gXfjb+FT18VWRZhvtB58B/Irc5Uz7SWfCDp90PXkLM04BXKrRpwCsV2jTglQptGvBKhTYNeKVCmwa8UqFNA16p0KYBr1Ro04BXKrRpwCsV2jTglQptGvBKhTYNeKVCmwa8UqFNA16p0KYBr1Ro04BXatRp2fCb2IBXasxpWTZcHnilgBcCXik29VIRw3NwJxUaxbjTgFcqtGnAKxXaNOCVCm0a8EqFNg14pUKbBrxSoU0DXqnQpgGvVGjTgFcqtGnAKxXaNOCVCm0a8EqFNs1f+K9Dux+8hJin+Qs/eFpo6+C404BXKrRpwCsV2jTglQptGvBKjTvtevASgNdJ4fbHcwJeKLQbns8JeCHgpYDXiU29VLzwrPFiwGsFvBCbeingleJ1vBDwWgEvxKZeCniVOLgTA14r4IXY1EsBrxJrvBjwWgEvxKZeCnileB0vBLxWwAsBLwW8UsALAa8V8ELASwGvFPBCwGsFvBDwUsArBbwQ8FoBLwS8FPBKAS8UMTxX56Tihed6vBjwWgEvxKZeCnilOLgTAl4r4IWAlwJeKeCFgNcKeCHgpYBXCngh4LUCXgh4KeCVAl4IeK2AFwJeyhv4Iq+qZXa12P4ZeKl44Mssr8rpnfnVPgC8VDTw6zc/53al33xYVc3V7U/31N314CX4AW+8SwM/rx6+rNqHWOOlYlnjC7uO549rvA14qVjgTSX7+DOKC56j+hcXEfx+wEsBLwS8FPBKAS80KvzINzwDLzQm/Njf4gC8EPBaAS8MY1MvFS88B3diwCsFvBDwWgEvBLwU8EoBLwS8VsALAS8VLzyv48WihefMnRzwSgEvxKZeK+CFOLiTAl4p4IWA1wp4IeClgFcKeKGY4YdTjDsNeKWAFwLen2nAKwW8EPD+TANeKeCFgPdnGvBKAS8EvD/TgFcKeCHg/ZkGvFLAC40LHxrFuNOAVyq0acArFdo04JUKbRrwSoU2DXilQpsGvFKhTQNeqdCmAa9UaNOAVyq0acArFdo04JUKbZq/8F+Hdj14CTFP8xd+8LTQ1sFxpwGvVGjTgFcqtGnAKxXaNOCVCm0a8EqFNg14pUKbBrxSoU0DXqnQpgGvlMq0a/26RgGvlA7837UD3nXACwF/aiHAAw9834AHfoSAFwL+1EKABx74vgEP/AgBLwT8qYUADzzwfQMe+BECXgj4UwsBHnjg+wY88CMEvBDwpxYCPPDA9w144EcIeKE9+NL+jPdssjr6ucBHC7+5nQufmyZ8EvfVbz4cX9ebgI8WvlrmwuemCZ/Ipp59/P5CkoCXAx74ngHvK/zDZ7Oln94d/1zgo4V/+GwP7ooOeeCjhW9eznW9qAM+WnjW+MOFJAHPPv5wIWnAiwE/Krw9qdKeUVm/WlS7HwwO+FMLuRT85tbsdouOc2nDew7fnrfjzN3OQi4FX5sb/dJ4/PhqYXbCf7iZmzW+nPyrC+icWONPLeRi8PZQyxxtl9ncbuHN34N1A3+1MB8M/v8F/KmFXAx+u8ZfLWr46d3mtlnjV/LV85fVvalfZuavmvn31ePhBPBjwm9uZ7X+Fv5xjdeH36mc2RM55fSufHx15wn8iFfIKw+O6lt4s4//k6s1fj8DX+TteTy7Ifh0P7TrwUuwC/mLdtLTcgDfNerUiqXh3QVfPDuqX2Z5Vcyrhy/bQ0hf1nh9eGmaPnzXKPHru77pPrPWp71z9e8XZhNfzNo/FvnjGn/yib0o4HvDa3dwkab5Zfbx9vRB7uU+Pg34/x2m8dXbtneR5ruF+bX+a3tUP/PyqD4V+IP/7hC+MuZllnXccQn8ReCvDx7RKMATOMBrBDzw1dO5u+MXAYAfGX7vJJPLNb7+hopiVh59xQj82PC/P+UWfnvP3U9H77oD/vLwzSuug+TvfTvW8XvufnnDGr+d5hf88lvpm9zOaP/gzrx6z2YdJ4WBHxv+YB+/+eY3s26v395m+dKewV3a197F64ndRBf2nG599mX9+ubk6V2O6n2GP1jji7n9Zbb3dt1czkt75XZe1BdS12YrXbx9Z0/CmQ/Nv+WvIvAhwdevuqZ363f1pbPlvL6m1l5QKet9gHnkamH+e/UD8BHB2zXceD/Ct9j5do0vzYbfrvHABw6/t49vtt/l9JctfH1INm8voRb2rsyb7Orj/Hz4IN4RIx349hkcPKLRwdU54XOBjxY+iHfEAF4j9vHewwuPDAh4b+HHvAPHfrfs9Lf3HTt64EeFf3wGB49odHCu3rwcPH5tDviI4ZvzAJ6/IwbwGh1b4z1/R4x04Ee8ESOEd8RICH73OXJUnyy8/Xaa+ntZhwd8UPBHb5Dp1bFN/ez4pwI/Ovz+Pr6Fby7CFK8nq+a+i7e3zfe+2G+IeOmdGEdvveqQB35s+N3n2G7qJ6sWflZfpl3O7X1425sy1i+9EyPANzhMGX5nja+/mbkqc/vHMm9uynjxnRj73yY9q1jjd6f5CP/mbvPewu+s8dubMl52J8bxb6g4fn0O+IvD10f1uTkSm3y08NXePj6br196JwZH9T7Dv+wEjmU+O+A9hm+fwcEjewGfKHyvgPceXnhkQMB7Cz/qjRjF9K7oPBkM/KjwB//d5fX49wvzq+M7MoG/DPxIN2KYdd53eP2kaUnAV0V2tSh939QnA7/3HDm4S2VTf737vwI+ZfhT3xP30ri9+hT8eDuWC8Jze/WApzV4CS/axxv4vSszj/dd1HdilPbV+LLzTSof4/Zqn+GPrvHtvRb1tdjn9100d2KYvxi/Nh/Jw7i9Ojj4p3styp37Lpo7MdY32faeDDFurw4Jfjk3a3Z7r0W9xj+/76Jsqddvfn7BO2NxVB8SvFmdZ1V7r0W9j9+576K+E2PZ7uNP3YQNvM/wwgmcXhfhn3XWDxz8OrTrwUuwC9GHV3lag5dw1ilbTfhTscaLT2vwErgR48RCEoMXHhnQzqb+w0+8B07/pzV4CZe8EeOMJ9Yn4KX4+fEnFgK8QsAD35y2Yx/f92kNXsLl1vhCPsMLvPi0Bi/hopv6Qji9D7z4tAYv4eL7+CWb+j5Pa/ASLgovnd7vfGIj3qVSAa/T/j5euqbTDf+7dsC7TuWofmT4UbcvLy5g+FN5Av/iVBYy4jTggXcf8FoBD3zPgAfefcBrBTzwPQMeePcBrxXwwPcMeODdB7xWwAPfM+CBdx/wWgEPfM+AB959wGsFPPA9Ax549wGvFfDA9wx44N0HvFbAA98z4IF3H/BaAQ98z4AH3n3AawU88D0DHnj3Aa8V8MD3DHjg3Qe8VsAD3zM/4O1bYNU/xO7q8UcbAu92mh/w9ofWLefl9NnPnQTe7TQ/4G2F/blmzc+dtG9/9+m+IwfwXaPOSWUhI07zBt6s9MW8eviyfbtD1ni303yBX9qfULpd423Au53mB/zDZ/u2tuzjR5zmB/yy+cG0HNWPN80P+CMB73Ya8MC7D3itgAe+Z8AD7z7gtQIe+J4BD7z7gNcqSfhYfy7UuNOAB959bOq1Ah74ngEPvPuA1wr4ROHvBy8BeODdB7xWwAPfM+CBdx/wWgEPfM+AB959wGsFPPA9Ax549wGvFfDA9wx44N0HvFbAA98z4IF3H/BaAQ98z4BXgh9OMe404IF3H/BaAQ98z4AH3n3AawU88D0DHnj3Aa8V8MD3DHjg3Qe8VsAD3zN/4b925ODNj7pGndO9xkJGnOYv/OBpoV0oHXca8EoBLwS8P9OAVwp4IeD9mQa8UsALAe/PNOCVAl4IeH+mAa8U8ELA+zMNeKWAFwLen2nAKwW8EPD+TANeKeCFgPdnGvBKAS8EvD/TgFcKeCHg/ZkGvFLACwHvzzTglQJeCHh/pgGvFPBCwPszDXilgBcC3p9pwCsFvBDw/kwDXinghYD3ZxrwSgEvBLw/04BXCngh4P2ZBrxSwAsB78804JUCXgh4f6YBrxTwQsD7Mw14pYAXAt6facArBbwQ8P5MA14p4IWA92eaL/CbD6uqWmZXi+0DwLud5gl8mU1WVTm9M7/aR4B3O80P+If/PHxZVUXerPhVZvp0P7TrwUuIOT/gDb2Fn9e/NbHGu53mFfx2jbcB73aaT/Ds40ec5hM8R/UjTvMF/iDg3U4DXinghYD3ZxrwSgEvBLw/0yKGD41i3GnAKxXaNOCVCm0a8EqFNg14pUKbBrxSoU0DXqnQpgGvVGjTgFcqtGnAKxXaNOCVCm0a8EqFNg14pUKbBrxSoU0DXqnQpgGvVGjTgFcqtGnAKxXaNOCVCm0a8EqFNs1f+MFlwxcR8zRnykc6B55p/kwbXMxfnJinDS7mL07M0wYX2NMlrYBPNOATDfhEAz7RnMGv/7o69vDTWylpzrqx78Y2119wVz8sTn+O5zmDX36bu1r0Qes3d6c/STPgO9t885tZt9dvb7N8mU3vqmWW5VXxevKTebTIzCPmgVm1fn2TTYejtfDrd5bEDFk1CzfDZ1UzudIcV8PvjXhceD2utNufZrCvuYIv5vaX2d5vbs2XYF7O7EPFzG7qLVPx9l318N3CfGj+PXhYvamfrFr4WWWnLed2Z7OdvNYcZ6e0C6xHPF94M878xfi1+UhhmJscwW9uM7ta2y/JF/u1KexOOG/eLrGs1wPzyNWioRo8bXeNz+uvd5nbP5Z5M1l1XL2QxwWWOwtvxpm/idvBvuYI3v51b9eFGr7FzrdrfGm+JHYt0YV/c7d5b+F31vjtZLVxy7lZVLvAesTzhZf59in97C+6zQ18s0Etp79s4e0OL5u3b5Bq1oXJjzfZ1ce5Fnx9VJ8/fM4mHy3J/g44m68Vx5llzap2gfWInYXX45btPn7MVxpnFvHreCsR/ghXAe/5CFdFDE9SwCca8IkWFXzxdBz9dKmg46JB6sUEX0zvqs2t3y+fvSki+ObCn1nB13/7x+RHs55vbrM//tOeZFm/+bfPL6kvUkTwzc9Qefg8X9/UVwmqZV6VVzX8TV6VKldn4ikm+Fn9W3Ou1l4eMluA5rRq+8CFn59fRQdv1/jG2Z7BB76riOCf9vGs8aeLCL4qJqv6qH7r/LSPB/6gmODtjS/24H3rbI7q/8wa31FU8IfB3VXE8A+fs2c/LZF2ixiepIBPNOATDfhEAz7RgE804BMN+ET7P2r8Q/fZqBYlAAAAAElFTkSuQmCC" alt="plot of chunk unnamed-chunk-2"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Additional Information</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>The Shiny app can be found <a href="https://slashmatti.shinyapps.io/DDP-Project">here</a></li>
+<li>The server and ui R files are published on Github <a href="http://github.com/slashmatti/DDP-Project">here</a></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Data description'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Car Data'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Shiny App'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Additional Information'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="http://slidifylibraries2.googlecode.com/git/inst/libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
