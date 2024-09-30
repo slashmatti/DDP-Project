@@ -1,1 +1,1 @@
-Course project assignment for Developing Data Products, given by Coursera.org and Johns Hopkins University and using RStudio along with the Shiny package.
+Course project assignment for Developing Data Products, given by Coursera.org and Johns Hopkins University and using RStudio with the Shiny package.
